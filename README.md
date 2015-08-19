@@ -8,7 +8,7 @@ Redirects all HTTP requests to HTTPS. Useful to redirect HTTP requests coming in
 ## Command Line Usage
 
 ```
-Usage: docker run -p 80:80 meltwater/redirector:latest [options]...
+Usage: docker run -p 80:80 meltwater/https-redirector:latest [options]...
 
 Redirects all HTTP requests to HTTPS
 
@@ -23,7 +23,7 @@ Options:
 ### Systemd
 
 Create a [Systemd unit](http://www.freedesktop.org/software/systemd/man/systemd.unit.html) file 
-in **/etc/systemd/system/redirector.service** with contents like below. 
+in **/etc/systemd/system/https-redirector.service** with contents like below. 
 
 ```
 [Unit]
@@ -35,7 +35,7 @@ Requires=docker.service
 WantedBy=multi-user.target
 
 [Service]
-Environment=IMAGE=meltwater/redirector:latest NAME=redirector
+Environment=IMAGE=meltwater/https-redirector:latest NAME=https-redirector
 
 # Allow docker pull to take some time
 TimeoutStartSec=600
@@ -61,8 +61,8 @@ classes:
   - docker::run_instance
 
 docker::run_instance:
-  'redirector':
-    image: 'meltwater/redirector:latest'
+  'https-redirector':
+    image: 'meltwater/https-redirector:latest'
     ports:
       - '80:80'
 ```

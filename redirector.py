@@ -15,7 +15,7 @@ def parsebool(value):
 
 
 parser = optparse.OptionParser(
-    usage='docker run -p 80:80 meltwater/redirector:latest [options]...',
+    usage='docker run -p 80:80 meltwater/https-redirector:latest [options]...',
     description='Redirects all HTTP requests to HTTPS')
 
 parser.add_option('--proxy-protocol', dest='proxyprotocol', help='Enable proxy protocol on nginx [default: %default]',
